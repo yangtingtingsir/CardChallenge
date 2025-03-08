@@ -7477,25 +7477,7 @@
         }
         async _AddScript(url, attributes=null)
         {
-            const api = this._GetApi();
-            api["webAdsScriptLoaded"] = false;
-            return new Promise((resolve, reject) => {
-                const scriptElem = document.createElement("script");
-                if (attributes)
-                    for (let attribute in attributes)
-                        scriptElem.setAttribute(attribute, attributes[attribute]);
-                scriptElem.onload = function AddScriptOnLoad() {
-                    api["webAdsScriptLoaded"] = true;
-                    resolve()
-                };
-                scriptElem.onerror =
-                function AddScriptOnError(e) {
-                    api["webAdsScriptLoaded"] = false;
-                    resolve()
-                };
-                scriptElem.src = url;
-                document.head.appendChild(scriptElem)
-            })
+            
         }
     }
     ;
